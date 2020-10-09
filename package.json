@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src",
+    "lint": "eslint src --max-warnings=0",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -37,9 +37,12 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "lint-staged": {
+    "src/**/*": ["yarn lint --fix"]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm shrinkwrap && git add npm-shrinkwrap.json",
+      "pre-commit": "npm shrinkwrap && git add npm-shrinkwrap.json && lint-staged",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
