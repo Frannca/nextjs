@@ -18,9 +18,9 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Brava500</title>
+        <title>Next.js - Frannca</title>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="description" content="Site da Brava 500." />
+        <meta name="description" content="Next.js starter project." />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
