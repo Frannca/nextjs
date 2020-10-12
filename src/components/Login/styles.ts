@@ -16,15 +16,21 @@ export const Wrapper = styled.div`
 `
 
 export const WelcomeWrapper = styled.div`
-  align-items: center;
+  align-items: baseline;
   color: #ffffff;
   display: flex;
   flex: 10;
-  padding: 48px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px;
 
   @media (max-width: 960px) {
     flex: 50%;
   }
+`
+
+export const LogoIcon = styled.img`
+  max-width: 100px;
 `
 
 export const WelcomeTitle = styled.h2`
