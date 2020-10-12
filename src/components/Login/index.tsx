@@ -8,8 +8,8 @@ const Login = ({ testID }: ILogin) => {
   return (
     <S.Wrapper data-pallete={theme.palette} data-testid={testID}>
       <S.WelcomeWrapper>
-        <S.LogoIcon src="/images/logo-icon-white.png" />
-        <S.WelcomeTitle>Welcome to the Frannca Dashboard!</S.WelcomeTitle>
+        <S.LogoIcon src="/images/logo-icon.png" />
+        <S.WelcomeTitle>Welcome to the SiteFácil Dashboard!</S.WelcomeTitle>
       </S.WelcomeWrapper>
       <S.FormWrapper noValidate autoComplete="off">
         <S.FormTitle>Login to your account</S.FormTitle>

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   background: linear-gradient(
     to right,
     ${(props) => props['data-pallete'].primary.main} 0%,
-    rgba(0, 0, 0, 1) 150%
+    rgba(0, 0, 0, 1) 120%
   );
   display: flex;
   height: 100%;
@@ -30,6 +30,7 @@ export const WelcomeWrapper = styled.div`
 `
 
 export const LogoIcon = styled.img`
+  margin-bottom: 48px;
   max-width: 100px;
 `
 
