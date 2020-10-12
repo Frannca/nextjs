@@ -11,7 +11,9 @@ describe('<Login />', () => {
   })
 
   it('should have a welcome title', () => {
-    expect(screen.getByText('Welcome to the Frannca Dashboard!')).toBeVisible()
+    expect(
+      screen.getByText('Welcome to the SiteFácil Dashboard!')
+    ).toBeVisible()
   })
 
   it('should have a login title', () => {
