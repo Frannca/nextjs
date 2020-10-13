@@ -1,52 +1,32 @@
 import * as S from './styles'
-import { IAppBar } from './types'
+import { IAppBar, ISecondaryAppBarButton } from './types'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Container } from '@material-ui/core'
 
 const AppBar = ({ testID, secondaryAppBar }: IAppBar) => {
   return (
     <S.Wrapper data-testid={testID}>
-      <S.SecondaryAppBar>
-        <Container>
-          {secondaryAppBar?.leftContent && (
-            <S.SecondaryAppBarLeftContent>
-              {secondaryAppBar.leftContent.map((item, index) => {
-                return (
-                  (item.link && (
-                    <a
-                      key={index}
-                      aria-label={item.link.aria}
-                      href={item.link.url}
-                    >
-                      {item.text}
-                    </a>
-                  )) ||
-                  item.text
-                )
-              })}
-            </S.SecondaryAppBarLeftContent>
-          )}
-          {secondaryAppBar?.rightContent && (
-            <S.SecondaryAppBarRightContent>
-              {secondaryAppBar.rightContent.map((item, index) => {
-                return (
-                  (item.link && (
-                    <a
-                      key={index}
-                      aria-label={item.link.aria}
-                      href={item.link.url}
-                    >
-                      {item.text}
-                    </a>
-                  )) ||
-                  item.text
-                )
-              })}
-            </S.SecondaryAppBarRightContent>
-          )}
-        </Container>
-      </S.SecondaryAppBar>
-      <S.AppBar color="secondary">
+      {secondaryAppBar && (
+        <S.SecondaryAppBar>
+          <S.SecondaryAppBarContainer>
+            {secondaryAppBar?.leftContent && (
+              <S.SecondaryAppBarLeftContent>
+                {secondaryAppBar.leftContent.map((item, index) => {
+                  return (item.link && getButton({ index, item })) || item.text
+                })}
+              </S.SecondaryAppBarLeftContent>
+            )}
+            {secondaryAppBar?.rightContent && (
+              <S.SecondaryAppBarRightContent>
+                {secondaryAppBar.rightContent.map((item, index) => {
+                  return (item.link && getButton({ index, item })) || item.text
+                })}
+              </S.SecondaryAppBarRightContent>
+            )}
+          </S.SecondaryAppBarContainer>
+        </S.SecondaryAppBar>
+      )}
+      <S.AppBar color="secondary" data-secondary-app-bar={secondaryAppBar}>
         <S.Toolbar>
           <Container>
             <S.IconButton edge="start" color="inherit" aria-label="menu">
@@ -56,6 +36,30 @@ const AppBar = ({ testID, secondaryAppBar }: IAppBar) => {
         </S.Toolbar>
       </S.AppBar>
     </S.Wrapper>
+  )
+}
+
+const getButton = ({ index, item }: ISecondaryAppBarButton) => {
+  return (
+    (item.link?.icon && (
+      <S.IconButton
+        size="small"
+        key={index}
+        onClick={() => window.open(item.link?.url, '_blank')}
+        aria-label={item.link?.aria}
+      >
+        {item.text}
+      </S.IconButton>
+    )) || (
+      <S.Button
+        size="small"
+        key={index}
+        href={item.link?.url}
+        aria-label={item.link?.aria}
+      >
+        {item.text}
+      </S.Button>
+    )
   )
 }
 
