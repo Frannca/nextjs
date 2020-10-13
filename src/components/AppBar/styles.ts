@@ -1,5 +1,7 @@
 import {
   AppBar as AppBarCore,
+  Button as ButtonCore,
+  Container,
   darken,
   IconButton as IconButtonCore,
   Toolbar as ToolbarCore
@@ -9,7 +11,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div``
 
 export const AppBar = styled(AppBarCore)`
-  top: 40px;
+  top: ${(props) => (props['data-secondary-app-bar'] ? '40px' : 0)};
 `
 
 export const SecondaryAppBar = styled.div`
@@ -22,7 +24,14 @@ export const SecondaryAppBar = styled.div`
   z-index: 1200;
 `
 
-export const SecondaryAppBarLeftContent = styled.div``
+export const SecondaryAppBarContainer = styled(Container)`
+  display: flex;
+`
+
+export const SecondaryAppBarLeftContent = styled.div`
+  display: flex;
+  flex: 1;
+`
 
 export const SecondaryAppBarRightContent = styled.div``
 
@@ -32,3 +41,5 @@ export const Toolbar = styled(ToolbarCore)`
   padding-left: 0;
   padding-right: 0;
 `
+
+export const Button = styled(ButtonCore)``

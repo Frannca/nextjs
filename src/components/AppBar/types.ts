@@ -1,3 +1,5 @@
+import { ReactElement } from 'react'
+
 export interface IAppBar {
   testID?: string
   secondaryAppBar?: ISecondaryAppBar
@@ -9,9 +11,15 @@ export interface ISecondaryAppBar {
 }
 
 export interface ISecondaryAppBarContent {
-  text: string
+  text: string | ReactElement
   link?: {
     aria: string
     url: string
+    icon: boolean
   }
+}
+
+export interface ISecondaryAppBarButton {
+  index: number
+  item: ISecondaryAppBarContent
 }
