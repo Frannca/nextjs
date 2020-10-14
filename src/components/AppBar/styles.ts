@@ -16,7 +16,8 @@ export const AppBar = styled(AppBarCore)`
 
 export const SecondaryAppBar = styled.div`
   align-items: center;
-  background-color: ${darken('#1db78d', 0.1)};
+  background-color: ${(props) =>
+    darken(props['data-theme'].palette[props.color].main, 0.1)};
   color: #ffffff;
   display: flex;
   height: 40px;
@@ -25,7 +26,11 @@ export const SecondaryAppBar = styled.div`
 `
 
 export const SecondaryAppBarContainer = styled(Container)`
-  display: flex;
+  display: flex !important;
+`
+
+export const ToolbarContainer = styled(Container)`
+  display: flex !important;
 `
 
 export const SecondaryAppBarLeftContent = styled.div`

@@ -1,13 +1,14 @@
 import * as S from './styles'
 import { IAppBar, ISecondaryAppBarButton } from './types'
-import MenuIcon from '@material-ui/icons/Menu'
-import { Container } from '@material-ui/core'
+import { MenuItem, useTheme } from '@material-ui/core'
 
-const AppBar = ({ testID, secondaryAppBar }: IAppBar) => {
+const AppBar = ({ testID, secondaryAppBar, color, menus }: IAppBar) => {
+  const theme = useTheme()
+
   return (
     <S.Wrapper data-testid={testID}>
       {secondaryAppBar && (
-        <S.SecondaryAppBar>
+        <S.SecondaryAppBar color={color} data-theme={theme}>
           <S.SecondaryAppBarContainer>
             {secondaryAppBar?.leftContent && (
               <S.SecondaryAppBarLeftContent>
@@ -27,16 +28,23 @@ const AppBar = ({ testID, secondaryAppBar }: IAppBar) => {
         </S.SecondaryAppBar>
       )}
       <S.AppBar
-        color="secondary"
+        color={color}
         position="static"
         data-secondary-app-bar={secondaryAppBar}
       >
         <S.Toolbar>
-          <Container>
-            <S.IconButton edge="start" color="inherit" aria-label="menu">
+          <S.ToolbarContainer>
+            {/* <S.IconButton edge="start" color="inherit" aria-label="menu">
               <MenuIcon />
-            </S.IconButton>
-          </Container>
+            </S.IconButton> */}
+
+            {menus &&
+              menus.map((menu, index) => (
+                <MenuItem component="a" href={menu.url} key={index}>
+                  <p>{menu.text}</p>
+                </MenuItem>
+              ))}
+          </S.ToolbarContainer>
         </S.Toolbar>
       </S.AppBar>
     </S.Wrapper>
@@ -45,12 +53,12 @@ const AppBar = ({ testID, secondaryAppBar }: IAppBar) => {
 
 const getButton = ({ index, item }: ISecondaryAppBarButton) => {
   return (
-    (item.link?.icon && (
+    (item?.icon && (
       <S.IconButton
         size="small"
         key={index}
-        onClick={() => window.open(item.link?.url, '_blank')}
-        aria-label={item.link?.aria}
+        onClick={() => window.open(item?.url, '_blank')}
+        aria-label={item?.aria}
       >
         {item.text}
       </S.IconButton>
@@ -58,13 +66,17 @@ const getButton = ({ index, item }: ISecondaryAppBarButton) => {
       <S.Button
         size="small"
         key={index}
-        href={item.link?.url}
-        aria-label={item.link?.aria}
+        href={item?.url}
+        aria-label={item?.aria}
       >
         {item.text}
       </S.Button>
     )
   )
+}
+
+AppBar.defaultProps = {
+  color: 'primary'
 }
 
 export default AppBar

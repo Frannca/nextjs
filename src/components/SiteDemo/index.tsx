@@ -1,6 +1,6 @@
 import { IAppBar } from 'components/AppBar/types'
 import * as S from './styles'
-import { ISite } from './types'
+import { ISiteDemo } from './types'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
@@ -8,41 +8,47 @@ import Slider from 'components/Slider'
 import { ISlider } from 'components/Slider/types'
 
 const appBarProps: IAppBar = {
+  color: 'secondary',
+  menus: [
+    {
+      text: 'Home',
+      url: '#',
+      aria: 'Link to home',
+      icon: false,
+      link: true
+    }
+  ],
   secondaryAppBar: {
     leftContent: [
       {
         text: 'Frannca',
-        link: {
-          url: 'http://frannca.com',
-          aria: 'Link to Frannca',
-          icon: false
-        }
+        url: 'http://frannca.com',
+        aria: 'Link to Frannca',
+        icon: false,
+        link: true
       }
     ],
     rightContent: [
       {
         text: <FacebookIcon />,
-        link: {
-          url: 'https://facebook.com',
-          aria: 'Link to Facebook',
-          icon: true
-        }
+        url: 'https://facebook.com',
+        aria: 'Link to Facebook',
+        icon: true,
+        link: true
       },
       {
         text: <TwitterIcon />,
-        link: {
-          url: 'https://twitter.com',
-          aria: 'Link to Twitter',
-          icon: true
-        }
+        url: 'https://twitter.com',
+        aria: 'Link to Twitter',
+        icon: true,
+        link: true
       },
       {
         text: <InstagramIcon />,
-        link: {
-          url: 'https://www.instagram.com',
-          aria: 'Link to Instagram',
-          icon: true
-        }
+        url: 'https://www.instagram.com',
+        aria: 'Link to Instagram',
+        icon: true,
+        link: true
       }
     ]
   }
@@ -55,17 +61,13 @@ const sliderProps: ISlider = {
   ]
 }
 
-const Site = ({ testID }: ISite) => {
+const Site = ({ testID }: ISiteDemo) => {
   return (
     <S.Wrapper data-testid={testID}>
       <S.AppBar {...appBarProps} />
       <Slider {...sliderProps}></Slider>
     </S.Wrapper>
   )
-}
-
-Site.defaultProps = {
-  testID: 'site'
 }
 
 export default Site

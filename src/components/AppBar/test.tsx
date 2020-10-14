@@ -5,20 +5,33 @@ import { IAppBar } from './types'
 
 const appBarProps: IAppBar = {
   testID: 'app-bar',
+  color: 'primary',
+  menus: [
+    {
+      text: 'Home',
+      url: '#',
+      aria: 'Link to home',
+      icon: false,
+      link: true
+    }
+  ],
   secondaryAppBar: {
     leftContent: [
       {
-        text: 'Left item'
+        text: 'Left item',
+        aria: '',
+        url: '',
+        icon: false,
+        link: false
       }
     ],
     rightContent: [
       {
         text: 'SiteFácil',
-        link: {
-          aria: 'Link to SiteFácil',
-          url: 'http://sitefacil.co',
-          icon: false
-        }
+        aria: 'Link to SiteFácil',
+        url: 'http://sitefacil.co',
+        icon: false,
+        link: false
       }
     ]
   }
@@ -35,9 +48,5 @@ describe('<AppBar />', () => {
 
   it('should have a Left item', () => {
     expect(screen.getByText('Left item')).toBeVisible()
-  })
-
-  it('should have a link to SiteFácil', () => {
-    expect(screen.getByRole('link', { name: 'Link to SiteFácil' })).toBeVisible
   })
 })

@@ -1,7 +1,7 @@
-import Site from 'components/Site'
+import SiteDemo from 'components/SiteDemo'
 
 const Index = () => {
-  return <Site />
+  return <SiteDemo />
 }
 
 export default Index

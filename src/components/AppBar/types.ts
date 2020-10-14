@@ -3,23 +3,30 @@ import { ReactElement } from 'react'
 export interface IAppBar {
   testID?: string
   secondaryAppBar?: ISecondaryAppBar
+  menus?: IAppBarItem[]
+  color:
+    | 'default'
+    | 'inherit'
+    | 'primary'
+    | 'secondary'
+    | 'transparent'
+    | undefined
 }
 
 export interface ISecondaryAppBar {
-  leftContent?: ISecondaryAppBarContent[]
-  rightContent?: ISecondaryAppBarContent[]
+  leftContent?: IAppBarItem[]
+  rightContent?: IAppBarItem[]
 }
 
-export interface ISecondaryAppBarContent {
+export interface IAppBarItem {
   text: string | ReactElement
-  link?: {
-    aria: string
-    url: string
-    icon: boolean
-  }
+  url: string
+  aria: string
+  icon?: boolean
+  link: boolean
 }
 
 export interface ISecondaryAppBarButton {
   index: number
-  item: ISecondaryAppBarContent
+  item: IAppBarItem
 }
