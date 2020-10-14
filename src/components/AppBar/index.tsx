@@ -26,7 +26,11 @@ const AppBar = ({ testID, secondaryAppBar }: IAppBar) => {
           </S.SecondaryAppBarContainer>
         </S.SecondaryAppBar>
       )}
-      <S.AppBar color="secondary" data-secondary-app-bar={secondaryAppBar}>
+      <S.AppBar
+        color="secondary"
+        position="static"
+        data-secondary-app-bar={secondaryAppBar}
+      >
         <S.Toolbar>
           <Container>
             <S.IconButton edge="start" color="inherit" aria-label="menu">
