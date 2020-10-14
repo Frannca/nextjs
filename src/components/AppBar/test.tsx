@@ -16,7 +16,8 @@ const appBarProps: IAppBar = {
         text: 'SiteFácil',
         link: {
           aria: 'Link to SiteFácil',
-          url: 'http://sitefacil.co'
+          url: 'http://sitefacil.co',
+          icon: false
         }
       }
     ]

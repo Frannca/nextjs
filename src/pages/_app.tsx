@@ -7,6 +7,8 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import theme from 'styles/theme'
 import { CssBaseline } from '@material-ui/core'
 
+import '../../node_modules/swiper/swiper-bundle.min.css'
+
 function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
